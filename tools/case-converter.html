@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Converter Online – UPPERCASE, lowercase, Title Case Free</title>
+  <meta name="description" content="Free online case converter tool. Convert text to UPPERCASE, lowercase, Title Case, Sentence case, camelCase, snake_case and more. Instant, no signup needed." />
+  <meta name="keywords" content="case converter, uppercase converter, lowercase converter, title case converter, text case changer online free" />
+  <link rel="canonical" href="https://yourdomain.com/tools/case-converter.html" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav-inner">
+    <a class="nav-logo" href="../index.html">⚡ Instant<span>Tools</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../tools.html">All Tools</a></li>
+      <li><a href="../generators/bio-generator.html">Generators</a></li>
+    </ul>
+    <button class="nav-menu-btn">☰</button>
+  </nav>
+</header>
+
+<div class="ad-slot ad-slot-banner container" style="margin-top:1rem;">📢 Advertisement</div>
+
+<main class="tool-page" style="max-width:800px;">
+  <div class="tool-box fade-up">
+    <span style="font-size:2.5rem;">🔤</span>
+    <h1>Case Converter</h1>
+    <p class="subtitle">Paste your text, then click any button to convert it instantly. 8 different case styles!</p>
+
+    <label for="input-text">Your Text</label>
+    <textarea id="input-text" rows="5" placeholder="Paste or type your text here..."></textarea>
+
+    <div class="btn-row" style="flex-wrap:wrap;">
+      <button class="btn btn-primary" onclick="convert('upper')">UPPERCASE</button>
+      <button class="btn btn-primary" onclick="convert('lower')">lowercase</button>
+      <button class="btn btn-primary" onclick="convert('title')">Title Case</button>
+      <button class="btn btn-primary" onclick="convert('sentence')">Sentence case</button>
+      <button class="btn btn-secondary" onclick="convert('camel')">camelCase</button>
+      <button class="btn btn-secondary" onclick="convert('snake')">snake_case</button>
+      <button class="btn btn-secondary" onclick="convert('kebab')">kebab-case</button>
+      <button class="btn btn-secondary" onclick="convert('alt')">aLtErNaTiNg</button>
+      <button class="btn btn-secondary" onclick="convert('reverse')">esreveR</button>
+    </div>
+  </div>
+
+  <!-- OUTPUT -->
+  <div class="tool-box fade-up-2" id="output-box" style="display:none;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem;">
+      <div>
+        <h2 style="font-size:1rem; font-weight:700;" id="case-name">Result</h2>
+        <span id="out-info" style="font-size:0.8rem; color:var(--text3);"></span>
+      </div>
+      <button class="btn btn-copy" onclick="copyOutput()">🔥 Copy Now</button>
+    </div>
+    <div class="output-box" id="output-text"></div>
+  </div>
+
+  <div class="ad-slot ad-slot-rectangle" style="margin:1.5rem auto;">📢 Advertisement</div>
+
+  <!-- EXAMPLES TABLE -->
+  <div class="tool-box fade-up-2">
+    <h2 style="font-size:1.1rem; margin-bottom:1rem;">📖 What Each Case Style Means</h2>
+    <div style="display:flex; flex-direction:column; gap:0.5rem;">
+      <div style="display:flex; gap:1rem; font-size:0.88rem; padding:0.5rem 0; border-bottom:1px solid var(--border);"><span style="color:var(--text3); width:130px; flex-shrink:0;">UPPERCASE</span><span style="color:var(--text);">HELLO WORLD</span></div>
+      <div style="display:flex; gap:1rem; font-size:0.88rem; padding:0.5rem 0; border-bottom:1px solid var(--border);"><span style="color:var(--text3); width:130px; flex-shrink:0;">lowercase</span><span style="color:var(--text);">hello world</span></div>
+      <div style="display:flex; gap:1rem; font-size:0.88rem; padding:0.5rem 0; border-bottom:1px solid var(--border);"><span style="color:var(--text3); width:130px; flex-shrink:0;">Title Case</span><span style="color:var(--text);">Hello World</span></div>
+      <div style="display:flex; gap:1rem; font-size:0.88rem; padding:0.5rem 0; border-bottom:1px solid var(--border);"><span style="color:var(--text3); width:130px; flex-shrink:0;">Sentence case</span><span style="color:var(--text);">Hello world</span></div>
+      <div style="display:flex; gap:1rem; font-size:0.88rem; padding:0.5rem 0; border-bottom:1px solid var(--border);"><span style="color:var(--text3); width:130px; flex-shrink:0;">camelCase</span><span style="color:var(--text);">helloWorld</span></div>
+      <div style="display:flex; gap:1rem; font-size:0.88rem; padding:0.5rem 0; border-bottom:1px solid var(--border);"><span style="color:var(--text3); width:130px; flex-shrink:0;">snake_case</span><span style="color:var(--text);">hello_world</span></div>
+      <div style="display:flex; gap:1rem; font-size:0.88rem; padding:0.5rem 0;"><span style="color:var(--text3); width:130px; flex-shrink:0;">kebab-case</span><span style="color:var(--text);">hello-world</span></div>
+    </div>
+  </div>
+</main>
+
+<div class="related-section">
+  <h2 class="section-title" style="margin-bottom:1rem;">🔗 Related Tools</h2>
+  <div class="related-grid">
+    <a href="word-counter.html" class="related-item">📝 Word Counter</a>
+    <a href="text-repeater.html" class="related-item">🔁 Text Repeater</a>
+    <a href="stylish-text.html" class="related-item">✨ Stylish Text</a>
+    <a href="../generators/caption-generator.html" class="related-item">💬 Caption Generator</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-links"><a href="../index.html">Home</a><a href="../tools.html">All Tools</a></div>
+  <p>© 2025 InstantToolsHub.com</p>
+</footer>
+<div class="ad-sticky-footer"><span style="color:var(--text3);font-size:0.75rem;">📢 Ad</span></div>
+
+<script src="../main.js"></script>
+<script>
+const CASE_NAMES = { upper:'UPPERCASE', lower:'lowercase', title:'Title Case', sentence:'Sentence case', camel:'camelCase', snake:'snake_case', kebab:'kebab-case', alt:'aLtErNaTiNg CaSe', reverse:'Reversed Text' };
+
+function convert(type) {
+  const input = document.getElementById('input-text').value;
+  if (!input.trim()) { showToast('⚠️ Please enter some text!'); return; }
+  let result = '';
+  switch(type) {
+    case 'upper': result = input.toUpperCase(); break;
+    case 'lower': result = input.toLowerCase(); break;
+    case 'title': result = input.toLowerCase().replace(/\b\w/g, c => c.toUpperCase()); break;
+    case 'sentence': result = input.toLowerCase().replace(/(^\s*\w|[.!?]\s+\w)/g, c => c.toUpperCase()); break;
+    case 'camel':
+      result = input.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (_, c) => c.toUpperCase());
+      result = result.charAt(0).toLowerCase() + result.slice(1);
+      break;
+    case 'snake': result = input.toLowerCase().replace(/\s+/g, '_').replace(/[^a-z0-9_]/g, ''); break;
+    case 'kebab': result = input.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''); break;
+    case 'alt': result = input.split('').map((c,i) => i%2===0 ? c.toLowerCase() : c.toUpperCase()).join(''); break;
+    case 'reverse': result = input.split('').reverse().join(''); break;
+  }
+  document.getElementById('case-name').textContent = CASE_NAMES[type];
+  document.getElementById('output-text').textContent = result;
+  document.getElementById('out-info').textContent = result.length + ' characters';
+  document.getElementById('output-box').style.display = 'block';
+  document.getElementById('output-box').scrollIntoView({ behavior:'smooth', block:'nearest' });
+}
+
+function copyOutput() {
+  const text = document.getElementById('output-text').textContent;
+  copyText(text, document.querySelector('#output-box .btn-copy'));
+}
+</script>
+</body>
+</html>

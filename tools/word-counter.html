@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Word Counter Online Free – Count Words, Characters & More</title>
+  <meta name="description" content="Free online word counter tool. Count words, characters, sentences, paragraphs and reading time in real time. Paste your text and get instant results." />
+  <meta name="keywords" content="word counter, word count online, character counter, count words free, online word counter tool" />
+  <link rel="canonical" href="https://yourdomain.com/tools/word-counter.html" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav-inner">
+    <a class="nav-logo" href="../index.html">⚡ Instant<span>Tools</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../tools.html">All Tools</a></li>
+      <li><a href="../generators/bio-generator.html">Generators</a></li>
+    </ul>
+    <button class="nav-menu-btn">☰</button>
+  </nav>
+</header>
+
+<div class="ad-slot ad-slot-banner container" style="margin-top:1rem;">📢 Advertisement</div>
+
+<main class="tool-page" style="max-width:800px;">
+  <div class="tool-box fade-up">
+    <span style="font-size:2.5rem;">📝</span>
+    <h1>Word Counter</h1>
+    <p class="subtitle">Paste or type your text below. Word count, character count, and more update instantly as you type!</p>
+
+    <!-- STATS ROW -->
+    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:0.7rem; margin-bottom:1.2rem;">
+      <div style="background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius-sm); padding:0.9rem; text-align:center;">
+        <div id="word-count" style="font-size:1.8rem; font-weight:700; color:var(--accent2);">0</div>
+        <div style="font-size:0.78rem; color:var(--text3); text-transform:uppercase; letter-spacing:0.05em;">Words</div>
+      </div>
+      <div style="background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius-sm); padding:0.9rem; text-align:center;">
+        <div id="char-count" style="font-size:1.8rem; font-weight:700; color:var(--accent3);">0</div>
+        <div style="font-size:0.78rem; color:var(--text3); text-transform:uppercase; letter-spacing:0.05em;">Characters</div>
+      </div>
+      <div style="background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius-sm); padding:0.9rem; text-align:center;">
+        <div id="char-no-space" style="font-size:1.8rem; font-weight:700; color:var(--green);">0</div>
+        <div style="font-size:0.78rem; color:var(--text3); text-transform:uppercase; letter-spacing:0.05em;">Chars (no space)</div>
+      </div>
+      <div style="background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius-sm); padding:0.9rem; text-align:center;">
+        <div id="sent-count" style="font-size:1.8rem; font-weight:700; color:var(--pink);">0</div>
+        <div style="font-size:0.78rem; color:var(--text3); text-transform:uppercase; letter-spacing:0.05em;">Sentences</div>
+      </div>
+      <div style="background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius-sm); padding:0.9rem; text-align:center;">
+        <div id="para-count" style="font-size:1.8rem; font-weight:700; color:var(--yellow);">0</div>
+        <div style="font-size:0.78rem; color:var(--text3); text-transform:uppercase; letter-spacing:0.05em;">Paragraphs</div>
+      </div>
+      <div style="background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius-sm); padding:0.9rem; text-align:center;">
+        <div id="read-time" style="font-size:1.8rem; font-weight:700; color:var(--accent);">0s</div>
+        <div style="font-size:0.78rem; color:var(--text3); text-transform:uppercase; letter-spacing:0.05em;">Read Time</div>
+      </div>
+    </div>
+
+    <label for="main-text">Your Text</label>
+    <textarea id="main-text" rows="10" placeholder="Paste or type your text here... Stats update as you type!" oninput="countWords()"></textarea>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="copyText(document.getElementById('main-text').value)">🔥 Copy Text</button>
+      <button class="btn btn-secondary" onclick="document.getElementById('main-text').value=''; countWords();">🗑️ Clear</button>
+    </div>
+  </div>
+
+  <div class="ad-slot ad-slot-rectangle" style="margin:1.5rem auto;">📢 Advertisement</div>
+
+  <!-- LIMIT CHECKER -->
+  <div class="tool-box fade-up-2">
+    <h2 style="font-size:1.1rem; margin-bottom:1rem;">✅ Platform Limit Checker</h2>
+    <div style="display:flex; flex-direction:column; gap:0.5rem;" id="limits"></div>
+  </div>
+</main>
+
+<div class="related-section">
+  <h2 class="section-title" style="margin-bottom:1rem;">🔗 Related Tools</h2>
+  <div class="related-grid">
+    <a href="case-converter.html" class="related-item">🔤 Case Converter</a>
+    <a href="text-repeater.html" class="related-item">🔁 Text Repeater</a>
+    <a href="stylish-text.html" class="related-item">✨ Stylish Text</a>
+    <a href="../generators/caption-generator.html" class="related-item">💬 Caption Generator</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-links"><a href="../index.html">Home</a><a href="../tools.html">All Tools</a></div>
+  <p>© 2025 InstantToolsHub.com</p>
+</footer>
+<div class="ad-sticky-footer"><span style="color:var(--text3);font-size:0.75rem;">📢 Ad</span></div>
+
+<script src="../main.js"></script>
+<script>
+const LIMITS = [
+  { name: 'Twitter / X', limit: 280, unit: 'chars' },
+  { name: 'Instagram Caption', limit: 2200, unit: 'chars' },
+  { name: 'Instagram Bio', limit: 150, unit: 'chars' },
+  { name: 'YouTube Title', limit: 100, unit: 'chars' },
+  { name: 'YouTube Description', limit: 5000, unit: 'chars' },
+  { name: 'WhatsApp Message', limit: 65536, unit: 'chars' },
+  { name: 'LinkedIn Post', limit: 3000, unit: 'chars' },
+];
+
+function countWords() {
+  const text = document.getElementById('main-text').value;
+  const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+  const chars = text.length;
+  const charsNoSpace = text.replace(/\s/g, '').length;
+  const sentences = text.trim() ? (text.match(/[.!?]+/g) || []).length : 0;
+  const paras = text.trim() ? text.split(/\n\s*\n/).filter(p => p.trim()).length : 0;
+  const readSec = Math.ceil(words / 200 * 60); // ~200 wpm
+  const readStr = readSec < 60 ? readSec + 's' : Math.ceil(readSec/60) + 'm';
+
+  document.getElementById('word-count').textContent = words;
+  document.getElementById('char-count').textContent = chars;
+  document.getElementById('char-no-space').textContent = charsNoSpace;
+  document.getElementById('sent-count').textContent = sentences;
+  document.getElementById('para-count').textContent = paras;
+  document.getElementById('read-time').textContent = readStr;
+
+  // Update limits
+  const limitsEl = document.getElementById('limits');
+  limitsEl.innerHTML = LIMITS.map(l => {
+    const count = l.unit === 'words' ? words : chars;
+    const pct = Math.min((count / l.limit) * 100, 100);
+    const over = count > l.limit;
+    return `
+      <div>
+        <div style="display:flex; justify-content:space-between; font-size:0.85rem; margin-bottom:0.3rem;">
+          <span style="color:var(--text2);">${l.name}</span>
+          <span style="color:${over ? '#ef4444' : 'var(--green)'}; font-weight:600;">${count} / ${l.limit} ${l.unit}</span>
+        </div>
+        <div style="background:var(--bg3); border-radius:999px; height:6px; overflow:hidden;">
+          <div style="height:100%; width:${pct}%; background:${over ? '#ef4444' : 'var(--green)'}; border-radius:999px; transition:width 0.3s;"></div>
+        </div>
+      </div>`;
+  }).join('');
+}
+countWords();
+</script>
+</body>
+</html>

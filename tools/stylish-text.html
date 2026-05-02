@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stylish Text Generator Online – 30+ Font Styles Free</title>
+  <meta name="description" content="Generate stylish text in 30+ different font styles online. Convert normal text to fancy fonts for Instagram bio, captions, usernames, and WhatsApp. Free, instant, no signup." />
+  <meta name="keywords" content="stylish text generator online, fancy text generator, cool text generator, instagram font generator, stylish fonts online free" />
+  <link rel="canonical" href="https://yourdomain.com/tools/stylish-text.html" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav-inner">
+    <a class="nav-logo" href="../index.html">⚡ Instant<span>Tools</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../tools.html">All Tools</a></li>
+      <li><a href="../generators/bio-generator.html">Generators</a></li>
+      <li><a href="../content/instagram-bios.html">Bios</a></li>
+    </ul>
+    <button class="nav-menu-btn">☰</button>
+  </nav>
+</header>
+
+<div class="ad-slot ad-slot-banner container" style="margin-top:1rem;">📢 Advertisement</div>
+
+<main class="tool-page" style="max-width:800px;">
+  <div class="tool-box fade-up">
+    <span style="font-size:2.5rem;">✨</span>
+    <h1>Stylish Text Generator</h1>
+    <p class="subtitle">Type anything below and instantly get 30+ stylish font versions. Perfect for Instagram bio, captions, usernames & WhatsApp!</p>
+
+    <label for="plain-text">Type Your Text Here</label>
+    <input type="text" id="plain-text" placeholder="e.g. Hello World" oninput="generateStyles()" maxlength="100" />
+
+    <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-bottom:1rem;">
+      <button class="btn btn-secondary" onclick="setExample('Hello World')">Hello World</button>
+      <button class="btn btn-secondary" onclick="setExample('Follow Me')">Follow Me</button>
+      <button class="btn btn-secondary" onclick="setExample('Your Name')">Your Name</button>
+      <button class="btn btn-secondary" onclick="setExample('Vibe Check')">Vibe Check</button>
+    </div>
+  </div>
+
+  <!-- STYLES OUTPUT -->
+  <div id="styles-output" style="display:none;">
+    <div class="tool-box fade-up-2" style="padding:1.2rem;">
+      <h2 style="font-size:1rem; font-weight:700; margin-bottom:1rem;">✨ <span id="style-count">0</span> Stylish Versions – Click any to copy!</h2>
+      <div id="styles-list" style="display:flex; flex-direction:column; gap:0.5rem;"></div>
+    </div>
+  </div>
+
+  <div class="ad-slot ad-slot-rectangle" style="margin:1.5rem auto;">📢 Advertisement</div>
+</main>
+
+<div class="related-section">
+  <h2 class="section-title" style="margin-bottom:1rem;">🔗 Related Tools</h2>
+  <div class="related-grid">
+    <a href="text-repeater.html" class="related-item">🔁 Text Repeater</a>
+    <a href="case-converter.html" class="related-item">🔤 Case Converter</a>
+    <a href="word-counter.html" class="related-item">📝 Word Counter</a>
+    <a href="../generators/bio-generator.html" class="related-item">📸 Bio Generator</a>
+    <a href="../generators/username-generator.html" class="related-item">👤 Username Generator</a>
+    <a href="../content/instagram-bios.html" class="related-item">📋 Instagram Bios</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../tools.html">All Tools</a>
+  </div>
+  <p>© 2025 InstantToolsHub.com</p>
+</footer>
+
+<div class="ad-sticky-footer"><span style="color:var(--text3);font-size:0.75rem;">📢 Ad</span></div>
+
+<script src="../main.js"></script>
+<script>
+// Unicode character maps for stylish text
+const STYLES = [
+  { name: '𝗕𝗼𝗹𝗱', map: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789', out: '𝗔𝗕𝗖𝗗𝗘𝗙𝗚𝗛𝗜𝗝𝗞𝗟𝗠𝗡𝗢𝗣𝗤𝗥𝗦𝗧𝗨𝗩𝗪𝗫𝗬𝗭𝗮𝗯𝗰𝗱𝗲𝗳𝗴𝗵𝗶𝗷𝗸𝗹𝗺𝗻𝗼𝗽𝗾𝗿𝘀𝘁𝘂𝘃𝘄𝘅𝘆𝘇𝟬𝟭𝟮𝟯𝟰𝟱𝟲𝟳𝟴𝟵' },
+  { name: '𝘐𝘵𝘢𝘭𝘪𝘤', map: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz', out: '𝘈𝘉𝘊𝘋𝘌𝘍𝘎𝘏𝘐𝘑𝘒𝘓𝘔𝘕𝘖𝘗𝘘𝘙𝘚𝘛𝘜𝘝𝘞𝘟𝘠𝘡𝘢𝘣𝘤𝘥𝘦𝘧𝘨𝘩𝘪𝘫𝘬𝘭𝘮𝘯𝘰𝘱𝘲𝘳𝘴𝘵𝘶𝘷𝘸𝘹𝘺𝘻' },
+  { name: '𝙱𝚘𝚕𝚍 𝙼𝚘𝚗𝚘', map: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789', out: '𝙰𝙱𝙲𝙳𝙴𝙵𝙶𝙷𝙸𝙹𝙺𝙻𝙼𝙽𝙾𝙿𝚀𝚁𝚂𝚃𝚄𝚅𝚆𝚇𝚈𝚉𝚊𝚋𝚌𝚍𝚎𝚏𝚐𝚑𝚒𝚓𝚔𝚕𝚖𝚗𝚘𝚙𝚚𝚛𝚜𝚝𝚞𝚟𝚠𝚡𝚢𝚣𝟶𝟷𝟸𝟹𝟺𝟻𝟼𝟽𝟾𝟿' },
+  { name: 'DoubleStruck', map: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789', out: '𝔸𝔹ℂ𝔻𝔼𝔽𝔾ℍ𝕀𝕁𝕂𝕃𝕄ℕ𝕆ℙℚℝ𝕊𝕋𝕌𝕍𝕎𝕏𝕐ℤ𝕒𝕓𝕔𝕕𝕖𝕗𝕘𝕙𝕚𝕛𝕜𝕝𝕞𝕟𝕠𝕡𝕢𝕣𝕤𝕥𝕦𝕧𝕨𝕩𝕪𝕫𝟘𝟙𝟚𝟛𝟜𝟝𝟞𝟟𝟠𝟡' },
+  { name: 'Fraktur', map: 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz', out: '𝔄𝔅ℭ𝔇𝔈𝔉𝔊ℌℑ𝔍𝔎𝔏𝔐𝔑𝔒𝔓𝔔ℜ𝔖𝔗𝔘𝔙𝔚𝔛𝔜ℨ𝔞𝔟𝔠𝔡𝔢𝔣𝔤𝔥𝔦𝔧𝔨𝔩𝔪𝔫𝔬𝔭𝔮𝔯𝔰𝔱𝔲𝔳𝔴𝔵𝔶𝔷' },
+];
+
+// Additional styles using character-by-character transforms
+const EXTRA_STYLES = [
+  { name: '🅱🅾🅻🅳 Box', fn: t => t.toUpperCase().split('').map(c => { const i = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.indexOf(c); return i >= 0 ? '🅐🅑🅒🅓🅔🅕🅖🅗🅘🅙🅚🅛🅜🅝🅞🅟🅠🅡🅢🅣🅤🅥🅦🅧🅨🅩'[i] : c; }).join('') },
+  { name: '⓪ Circle', fn: t => t.toUpperCase().split('').map(c => { const i = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.indexOf(c); return i >= 0 ? 'ⒶⒷⒸⒹⒺⒻⒼⒽⒾⒿⓀⓁⓂⓃⓄⓅⓆⓇⓈⓉⓊⓋⓌⓍⓎⓏ'[i] : c; }).join('') },
+  { name: 'S̶t̶r̶i̶k̶e̶', fn: t => t.split('').map(c => c + '\u0336').join('') },
+  { name: 'U͟n͟d͟e͟r͟l͟i͟n͟e͟', fn: t => t.split('').map(c => c + '\u0332').join('') },
+  { name: 'S͛p͛a͛c͛e͛d͛', fn: t => t.split('').join(' ') },
+  { name: '★彡 Star', fn: t => '★彡 ' + t + ' 彡★' },
+  { name: '『Brackets』', fn: t => '『' + t + '』' },
+  { name: '〖 Asian 〗', fn: t => '〖 ' + t + ' 〗' },
+  { name: '꧁ Crown ꧂', fn: t => '꧁ ' + t + ' ꧂' },
+  { name: '✦ Sparkle ✦', fn: t => '✦ ' + t + ' ✦' },
+  { name: '🔥 Fire 🔥', fn: t => '🔥 ' + t + ' 🔥' },
+  { name: '⚡ Electric ⚡', fn: t => '⚡ ' + t + ' ⚡' },
+  { name: '〔 Square 〕', fn: t => '〔 ' + t + ' 〕' },
+  { name: 'ᴜᴘᴘᴇʀ ꜱᴍᴀʟʟ', fn: t => t.toLowerCase().split('').map(c => 'abcdefghijklmnopqrstuvwxyz'.includes(c) ? 'ᴀʙᴄᴅᴇꜰɢʜɪᴊᴋʟᴍɴᴏᴘǫʀꜱᴛᴜᴠᴡxʏᴢ'['abcdefghijklmnopqrstuvwxyz'.indexOf(c)] : c).join('') },
+  { name: 'ɹǝʌǝɹsǝp', fn: t => t.split('').map(c => { const m = {'a':'ɐ','b':'q','c':'ɔ','d':'p','e':'ǝ','f':'ɟ','g':'ƃ','h':'ɥ','i':'ᵻ','j':'ɾ','k':'ʞ','l':'l','m':'ɯ','n':'u','o':'o','p':'d','q':'b','r':'ɹ','s':'s','t':'ʇ','u':'n','v':'ʌ','w':'ʍ','x':'x','y':'ʎ','z':'z'}; return m[c.toLowerCase()] || c; }).reverse().join('') },
+  { name: '— Dotted —', fn: t => '— ' + t.split('').join('·') + ' —' },
+  { name: 'WIDE　TEXT', fn: t => t.split('').join('　') },
+  { name: '💎 Diamond 💎', fn: t => '💎 ' + t + ' 💎' },
+  { name: '✿ Flower ✿', fn: t => '✿ ' + t + ' ✿' },
+];
+
+function convertStyle(text, map, out) {
+  return text.split('').map(c => {
+    const i = map.indexOf(c);
+    return i >= 0 ? [...out][i] : c;
+  }).join('');
+}
+
+function generateStyles() {
+  const text = document.getElementById('plain-text').value;
+  const output = document.getElementById('styles-output');
+  const list = document.getElementById('styles-list');
+
+  if (!text.trim()) { output.style.display = 'none'; return; }
+
+  const results = [];
+
+  // Unicode mapped styles
+  STYLES.forEach(s => {
+    try {
+      const converted = convertStyle(text, s.map, s.out);
+      results.push({ name: s.name, text: converted });
+    } catch(e) {}
+  });
+
+  // Function-based styles
+  EXTRA_STYLES.forEach(s => {
+    try {
+      results.push({ name: s.name, text: s.fn(text) });
+    } catch(e) {}
+  });
+
+  // Insert ad after every 8 items
+  list.innerHTML = '';
+  results.forEach((r, i) => {
+    if (i > 0 && i % 8 === 0) {
+      list.insertAdjacentHTML('beforeend', '<div class="ad-slot" style="min-height:90px; margin:0.5rem 0;">📢 Advertisement</div>');
+    }
+    const el = document.createElement('div');
+    el.style.cssText = 'display:flex; justify-content:space-between; align-items:center; gap:1rem; background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius-sm); padding:0.7rem 1rem; transition:border-color 0.2s; cursor:pointer;';
+    el.innerHTML = `
+      <div>
+        <div style="font-size:0.7rem; color:var(--text3); margin-bottom:0.2rem; text-transform:uppercase; letter-spacing:0.04em;">${r.name}</div>
+        <div style="font-size:1rem; color:var(--text);">${r.text}</div>
+      </div>
+      <button class="btn btn-copy" onclick="copyText('${r.text.replace(/'/g,"\\'")}', this)">🔥 Copy</button>
+    `;
+    el.addEventListener('mouseenter', () => el.style.borderColor = 'rgba(124,92,252,0.4)');
+    el.addEventListener('mouseleave', () => el.style.borderColor = 'var(--border)');
+    list.appendChild(el);
+  });
+
+  document.getElementById('style-count').textContent = results.length;
+  output.style.display = 'block';
+}
+
+function setExample(text) {
+  document.getElementById('plain-text').value = text;
+  generateStyles();
+}
+</script>
+</body>
+</html>

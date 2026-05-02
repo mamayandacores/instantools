@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Text Repeater Tool – Repeat Text & Emoji Online Free</title>
+  <meta name="description" content="Repeat any text, word, or emoji multiple times online. Add custom separators, line breaks, and emoji. Free text repeater tool – no signup needed." />
+  <meta name="keywords" content="text repeater, repeat text online, emoji repeater, text repeater tool free, repeat words online" />
+  <link rel="canonical" href="https://yourdomain.com/tools/text-repeater.html" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Text Repeater Tool",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "Repeat any text or emoji multiple times with custom separators",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav-inner">
+    <a class="nav-logo" href="../index.html">⚡ Instant<span>Tools</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../tools.html">All Tools</a></li>
+      <li><a href="../generators/bio-generator.html">Generators</a></li>
+      <li><a href="../content/instagram-bios.html">Bios</a></li>
+    </ul>
+    <button class="nav-menu-btn">☰</button>
+  </nav>
+</header>
+
+<div class="ad-slot ad-slot-banner container" style="margin-top:1rem;">📢 Advertisement</div>
+
+<main class="tool-page">
+  <div class="tool-box fade-up">
+    <span style="font-size:2.5rem;">🔁</span>
+    <h1>Text Repeater Tool</h1>
+    <p class="subtitle">Repeat any text, emoji, or word as many times as you want. Add separators, line breaks — done in seconds!</p>
+
+    <label for="input-text">Enter Text or Emoji to Repeat</label>
+    <input type="text" id="input-text" placeholder="e.g. Hello 😊 or ❤️" />
+
+    <label for="repeat-count">How many times to repeat?</label>
+    <div style="display:flex; align-items:center; gap:1rem; margin-bottom:1rem;">
+      <input type="range" id="repeat-slider" min="1" max="100" value="5" oninput="syncCount(this.value)" style="flex:1;" />
+      <input type="number" id="repeat-count" min="1" max="500" value="5" oninput="syncSlider(this.value)" style="width:80px; margin-bottom:0;" />
+    </div>
+
+    <label>Separator Between Repetitions</label>
+    <div class="btn-row" style="margin-bottom:1rem; flex-wrap:wrap;">
+      <button class="btn btn-secondary sep-btn active" data-sep="" onclick="setSep(this,'')">None</button>
+      <button class="btn btn-secondary sep-btn" data-sep=" " onclick="setSep(this,' ')">Space</button>
+      <button class="btn btn-secondary sep-btn" data-sep=", " onclick="setSep(this,', ')">Comma</button>
+      <button class="btn btn-secondary sep-btn" data-sep=" | " onclick="setSep(this,' | ')">Pipe |</button>
+      <button class="btn btn-secondary sep-btn" data-sep="\n" onclick="setSep(this,'\n')">New Line</button>
+      <button class="btn btn-secondary sep-btn" data-sep=" - " onclick="setSep(this,' - ')">Dash</button>
+    </div>
+
+    <label class="check-row">
+      <input type="checkbox" id="add-emoji" />
+      <span>Add emoji after each repeat 🎉</span>
+    </label>
+    <input type="text" id="emoji-input" placeholder="Enter emoji e.g. 🔥" style="display:none; margin-top:0.5rem;" />
+
+    <div class="btn-row" style="margin-top:1rem;">
+      <button class="btn btn-primary" onclick="generate()">🔁 Repeat Text</button>
+      <button class="btn btn-secondary" onclick="clearAll()">🗑️ Clear</button>
+    </div>
+  </div>
+
+  <!-- OUTPUT -->
+  <div class="tool-box fade-up-2" id="output-section" style="display:none;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem;">
+      <h2 style="font-size:1rem; font-weight:700;">✅ Result</h2>
+      <div style="display:flex; gap:0.5rem;">
+        <span id="char-count" style="color:var(--text3); font-size:0.8rem; align-self:center;"></span>
+        <button class="btn btn-copy" onclick="copyOutput()">🔥 Copy Now</button>
+      </div>
+    </div>
+    <div class="output-box" id="output-text" style="max-height:300px; overflow-y:auto;"></div>
+  </div>
+
+  <div class="ad-slot ad-slot-rectangle" style="margin:1.5rem auto;">📢 Advertisement</div>
+
+  <!-- TIPS -->
+  <div class="tool-box fade-up-2">
+    <h2 style="font-size:1.1rem; margin-bottom:1rem;">💡 Cool Uses for Text Repeater</h2>
+    <div style="display:grid; gap:0.6rem;">
+      <div style="background:var(--bg2); border-radius:var(--radius-sm); padding:0.8rem 1rem; font-size:0.9rem; color:var(--text2);">❤️❤️❤️ — Repeat hearts for WhatsApp messages</div>
+      <div style="background:var(--bg2); border-radius:var(--radius-sm); padding:0.8rem 1rem; font-size:0.9rem; color:var(--text2);">SALE SALE SALE — Marketing text for social media</div>
+      <div style="background:var(--bg2); border-radius:var(--radius-sm); padding:0.8rem 1rem; font-size:0.9rem; color:var(--text2);">Ha ha ha ha ha — Fun comments & reactions</div>
+      <div style="background:var(--bg2); border-radius:var(--radius-sm); padding:0.8rem 1rem; font-size:0.9rem; color:var(--text2);">🔥🔥🔥 — Fire emoji for hype posts</div>
+    </div>
+  </div>
+</main>
+
+<div class="related-section">
+  <h2 class="section-title" style="margin-bottom:1rem;">🔗 Related Tools</h2>
+  <div class="related-grid">
+    <a href="whatsapp.html" class="related-item">💬 WhatsApp Tool</a>
+    <a href="stylish-text.html" class="related-item">✨ Stylish Text</a>
+    <a href="case-converter.html" class="related-item">🔤 Case Converter</a>
+    <a href="word-counter.html" class="related-item">📝 Word Counter</a>
+    <a href="../generators/caption-generator.html" class="related-item">💬 Caption Generator</a>
+    <a href="../content/whatsapp-lines.html" class="related-item">💚 WhatsApp Lines</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../tools.html">All Tools</a>
+    <a href="../generators/bio-generator.html">Generators</a>
+  </div>
+  <p>© 2025 InstantToolsHub.com</p>
+</footer>
+
+<div class="ad-sticky-footer"><span style="color:var(--text3);font-size:0.75rem;">📢 Ad</span></div>
+
+<script src="../main.js"></script>
+<script>
+  let currentSep = '';
+
+  function setSep(btn, val) {
+    document.querySelectorAll('.sep-btn').forEach(b => b.classList.remove('active', 'btn-primary'));
+    btn.classList.add('active', 'btn-primary');
+    currentSep = val;
+  }
+
+  function syncCount(v) { document.getElementById('repeat-count').value = v; }
+  function syncSlider(v) { document.getElementById('repeat-slider').value = v; }
+
+  document.getElementById('add-emoji').addEventListener('change', function() {
+    document.getElementById('emoji-input').style.display = this.checked ? 'block' : 'none';
+  });
+
+  function generate() {
+    const text = document.getElementById('input-text').value;
+    if (!text.trim()) { showToast('⚠️ Please enter some text!'); return; }
+    const count = parseInt(document.getElementById('repeat-count').value) || 1;
+    const safeCount = Math.min(count, 500);
+    const addEmoji = document.getElementById('add-emoji').checked;
+    const emoji = document.getElementById('emoji-input').value;
+    const sep = currentSep === '\\n' ? '\n' : currentSep;
+
+    let piece = text + (addEmoji && emoji ? emoji : '');
+    const result = Array(safeCount).fill(piece).join(sep);
+
+    document.getElementById('output-text').textContent = result;
+    document.getElementById('char-count').textContent = result.length + ' chars';
+    document.getElementById('output-section').style.display = 'block';
+    document.getElementById('output-section').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function copyOutput() {
+    const text = document.getElementById('output-text').textContent;
+    const btn = document.querySelector('#output-section .btn-copy');
+    copyText(text, btn);
+  }
+
+  function clearAll() {
+    document.getElementById('input-text').value = '';
+    document.getElementById('output-section').style.display = 'none';
+  }
+
+  // Active style for sep buttons
+  document.querySelector('.sep-btn').classList.add('btn-primary');
+</script>
+</body>
+</html>

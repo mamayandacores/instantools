@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Random Number Generator Online Free – Any Range</title>
+  <meta name="description" content="Generate random numbers online in any range instantly. Pick lottery numbers, dice rolls, raffle winners. Free random number generator with history." />
+  <meta name="keywords" content="random number generator, random number picker, lottery number generator, random number online free, dice roller online" />
+  <link rel="canonical" href="https://yourdomain.com/tools/random-number.html" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav-inner">
+    <a class="nav-logo" href="../index.html">⚡ Instant<span>Tools</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../tools.html">All Tools</a></li>
+    </ul>
+    <button class="nav-menu-btn">☰</button>
+  </nav>
+</header>
+
+<div class="ad-slot ad-slot-banner container" style="margin-top:1rem;">📢 Advertisement</div>
+
+<main class="tool-page">
+  <div class="tool-box fade-up">
+    <span style="font-size:2.5rem;">🎲</span>
+    <h1>Random Number Generator</h1>
+    <p class="subtitle">Generate random numbers in any range instantly. Perfect for lottery, games, raffles and more!</p>
+
+    <!-- BIG NUMBER DISPLAY -->
+    <div id="big-number" style="background: linear-gradient(135deg, rgba(124,92,252,0.15), rgba(56,189,248,0.1)); border:2px solid var(--accent); border-radius:var(--radius); padding:2rem; text-align:center; margin-bottom:1.5rem;">
+      <div id="result-num" style="font-family:var(--font-display); font-size:4rem; font-weight:800; color:var(--accent2); letter-spacing:-2px;">?</div>
+      <div id="result-info" style="color:var(--text3); font-size:0.85rem; margin-top:0.3rem;">Press Generate to get a number</div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin-bottom:1rem;">
+      <div>
+        <label for="min-val">Minimum Number</label>
+        <input type="number" id="min-val" value="1" />
+      </div>
+      <div>
+        <label for="max-val">Maximum Number</label>
+        <input type="number" id="max-val" value="100" />
+      </div>
+    </div>
+
+    <label for="count-val">How many numbers to generate?</label>
+    <input type="number" id="count-val" value="1" min="1" max="50" style="max-width:120px;" />
+
+    <label class="check-row" style="margin:0.8rem 0;">
+      <input type="checkbox" id="no-repeat" />
+      <span>No repeated numbers (unique only)</span>
+    </label>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" style="font-size:1rem; padding:0.8rem 1.8rem;" onclick="generate()">🎲 Generate!</button>
+      <button class="btn btn-secondary" onclick="clearHistory()">🗑️ Clear History</button>
+    </div>
+
+    <!-- QUICK PRESETS -->
+    <div style="margin-top:1.2rem;">
+      <p style="font-size:0.82rem; color:var(--text3); margin-bottom:0.6rem; text-transform:uppercase; letter-spacing:0.04em; font-weight:600;">Quick Presets:</p>
+      <div class="btn-row" style="flex-wrap:wrap; gap:0.5rem;">
+        <button class="btn btn-secondary" onclick="setPreset(1,6)">🎲 Dice (1–6)</button>
+        <button class="btn btn-secondary" onclick="setPreset(0,9)">🔢 Single Digit</button>
+        <button class="btn btn-secondary" onclick="setPreset(1,100)">💯 1–100</button>
+        <button class="btn btn-secondary" onclick="setPreset(1,1000)">🔢 1–1000</button>
+        <button class="btn btn-secondary" onclick="setLottery()">🎰 Lottery (6 nums)</button>
+        <button class="btn btn-secondary" onclick="setPreset(1,52)">🃏 Card Deck</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MULTI RESULT -->
+  <div id="multi-result" class="tool-box fade-up-2" style="display:none;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.8rem;">
+      <h2 style="font-size:1rem; font-weight:700;">Generated Numbers</h2>
+      <button class="btn btn-copy" id="copy-multi-btn">🔥 Copy All</button>
+    </div>
+    <div id="multi-numbers" style="display:flex; flex-wrap:wrap; gap:0.5rem;"></div>
+  </div>
+
+  <!-- HISTORY -->
+  <div class="tool-box fade-up-2">
+    <h2 style="font-size:1rem; font-weight:700; margin-bottom:0.8rem;">📋 History (last 20)</h2>
+    <div id="history-list" style="display:flex; flex-wrap:wrap; gap:0.4rem;">
+      <span style="color:var(--text3); font-size:0.88rem;">No history yet...</span>
+    </div>
+  </div>
+
+  <div class="ad-slot ad-slot-rectangle" style="margin:1.5rem auto;">📢 Advertisement</div>
+</main>
+
+<div class="related-section">
+  <h2 class="section-title" style="margin-bottom:1rem;">🔗 Related Tools</h2>
+  <div class="related-grid">
+    <a href="password.html" class="related-item">🔐 Password Generator</a>
+    <a href="qr-generator.html" class="related-item">📲 QR Generator</a>
+    <a href="word-counter.html" class="related-item">📝 Word Counter</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-links"><a href="../index.html">Home</a><a href="../tools.html">All Tools</a></div>
+  <p>© 2025 InstantToolsHub.com</p>
+</footer>
+<div class="ad-sticky-footer"><span style="color:var(--text3);font-size:0.75rem;">📢 Ad</span></div>
+
+<script src="../main.js"></script>
+<script>
+let history = [];
+
+function rand(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function generate() {
+  const min = parseInt(document.getElementById('min-val').value);
+  const max = parseInt(document.getElementById('max-val').value);
+  const count = Math.min(parseInt(document.getElementById('count-val').value) || 1, 50);
+  const noRepeat = document.getElementById('no-repeat').checked;
+
+  if (min >= max) { showToast('⚠️ Max must be greater than Min!'); return; }
+
+  let numbers = [];
+  if (noRepeat) {
+    const pool = [];
+    for (let i = min; i <= max; i++) pool.push(i);
+    for (let i = 0; i < Math.min(count, pool.length); i++) {
+      const idx = Math.floor(Math.random() * pool.length);
+      numbers.push(pool.splice(idx, 1)[0]);
+    }
+  } else {
+    for (let i = 0; i < count; i++) numbers.push(rand(min, max));
+  }
+
+  // Animate big display
+  const display = document.getElementById('result-num');
+  display.style.transform = 'scale(1.2)';
+  display.style.color = 'var(--accent3)';
+  setTimeout(() => { display.style.transform = ''; display.style.color = 'var(--accent2)'; }, 300);
+
+  if (count === 1) {
+    display.textContent = numbers[0];
+    document.getElementById('result-info').textContent = `Range: ${min} to ${max}`;
+    document.getElementById('multi-result').style.display = 'none';
+  } else {
+    display.textContent = numbers[0];
+    document.getElementById('result-info').textContent = `Showing ${numbers.length} numbers`;
+    const multiEl = document.getElementById('multi-numbers');
+    multiEl.innerHTML = numbers.map(n => `<span style="background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius-sm); padding:0.4rem 0.9rem; font-weight:700; color:var(--accent2);">${n}</span>`).join('');
+    document.getElementById('multi-result').style.display = 'block';
+    document.getElementById('copy-multi-btn').onclick = () => copyText(numbers.join(', '), document.getElementById('copy-multi-btn'));
+  }
+
+  // Update history
+  numbers.forEach(n => {
+    history.unshift(n);
+    if (history.length > 20) history.pop();
+  });
+  renderHistory();
+}
+
+function renderHistory() {
+  const el = document.getElementById('history-list');
+  if (!history.length) { el.innerHTML = '<span style="color:var(--text3);font-size:0.88rem;">No history yet...</span>'; return; }
+  el.innerHTML = history.map(n => `<span style="background:var(--card2); border:1px solid var(--border); border-radius:var(--radius-sm); padding:0.3rem 0.7rem; font-size:0.88rem; color:var(--text2);">${n}</span>`).join('');
+}
+
+function clearHistory() { history = []; renderHistory(); document.getElementById('result-num').textContent = '?'; }
+
+function setPreset(min, max) {
+  document.getElementById('min-val').value = min;
+  document.getElementById('max-val').value = max;
+  document.getElementById('count-val').value = 1;
+  generate();
+}
+
+function setLottery() {
+  document.getElementById('min-val').value = 1;
+  document.getElementById('max-val').value = 49;
+  document.getElementById('count-val').value = 6;
+  document.getElementById('no-repeat').checked = true;
+  generate();
+}
+</script>
+</body>
+</html>
