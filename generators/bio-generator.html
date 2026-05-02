@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instagram Bio Generator Free – Create Perfect Bio Instantly</title>
+  <meta name="description" content="Generate unique, stylish Instagram bios for free. Choose your vibe – attitude, love, funny, motivational, aesthetic. Click generate and copy instantly!" />
+  <meta name="keywords" content="instagram bio generator, instagram bio maker, best instagram bio, cool instagram bio, stylish bio for instagram free" />
+  <link rel="canonical" href="https://yourdomain.com/generators/bio-generator.html" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Instagram Bio Generator",
+    "applicationCategory": "UtilitiesApplication",
+    "description": "Free Instagram bio generator with 100+ styles",
+    "operatingSystem": "Any",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+  }
+  </script>
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav-inner">
+    <a class="nav-logo" href="../index.html">⚡ Instant<span>Tools</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../tools.html">All Tools</a></li>
+      <li><a href="bio-generator.html" class="active">Bio Gen</a></li>
+      <li><a href="../content/instagram-bios.html">Bios</a></li>
+    </ul>
+    <button class="nav-menu-btn">☰</button>
+  </nav>
+</header>
+
+<div class="ad-slot ad-slot-banner container" style="margin-top:1rem;">📢 Advertisement</div>
+
+<main class="tool-page" style="max-width:800px;">
+  <div class="tool-box fade-up">
+    <span style="font-size:2.5rem;">📸</span>
+    <h1>Instagram Bio Generator</h1>
+    <p class="subtitle">Generate the perfect Instagram bio in seconds! Choose your style, add your name, and copy!</p>
+
+    <label>Choose Your Bio Style / Vibe</label>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(130px,1fr)); gap:0.5rem; margin-bottom:1.2rem;" id="category-grid">
+      <!-- Categories inserted by JS -->
+    </div>
+
+    <label for="user-name">Your Name or Nickname (optional)</label>
+    <input type="text" id="user-name" placeholder="e.g. Alex, Zara, King..." maxlength="30" />
+
+    <label for="user-word">A Word That Describes You (optional)</label>
+    <input type="text" id="user-word" placeholder="e.g. dreamer, warrior, artist..." maxlength="30" />
+
+    <div class="btn-row">
+      <button class="btn btn-primary" style="font-size:1rem;" onclick="generateBios()">✨ Generate Bios</button>
+      <button class="btn btn-secondary" onclick="generateBios()">🔄 Generate Again</button>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="bio-results" style="display:none;">
+    <div style="display:flex; align-items:center; gap:0.7rem; padding:0 0 0.8rem; max-width:800px; margin:0 auto;">
+      <h2 class="section-title" style="font-size:1.1rem; margin:0;">✨ Your Generated Bios</h2>
+      <span class="chip">Click to Copy</span>
+    </div>
+    <div id="bio-list" style="display:flex; flex-direction:column; gap:0.6rem;"></div>
+  </div>
+
+  <div class="ad-slot ad-slot-rectangle" style="margin:1.5rem auto;">📢 Advertisement</div>
+</main>
+
+<div class="related-section">
+  <h2 class="section-title" style="margin-bottom:1rem;">🔗 Related Pages</h2>
+  <div class="related-grid">
+    <a href="username-generator.html" class="related-item">👤 Username Generator</a>
+    <a href="caption-generator.html" class="related-item">💬 Caption Generator</a>
+    <a href="title-generator.html" class="related-item">▶️ YouTube Title Gen</a>
+    <a href="../content/instagram-bios.html" class="related-item">📋 200+ Bios Collection</a>
+    <a href="../tools/stylish-text.html" class="related-item">✨ Stylish Text</a>
+    <a href="../content/usernames.html" class="related-item">🎮 Usernames List</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../tools.html">All Tools</a>
+    <a href="../content/instagram-bios.html">Bios Collection</a>
+  </div>
+  <p>© 2025 InstantToolsHub.com</p>
+</footer>
+<div class="ad-sticky-footer"><span style="color:var(--text3);font-size:0.75rem;">📢 Ad</span></div>
+
+<script src="../main.js"></script>
+<script>
+const CATEGORIES = [
+  { id:'attitude', label:'😤 Attitude', emoji:'😤' },
+  { id:'love', label:'❤️ Love', emoji:'❤️' },
+  { id:'funny', label:'😂 Funny', emoji:'😂' },
+  { id:'motivational', label:'💪 Motivation', emoji:'💪' },
+  { id:'aesthetic', label:'🌸 Aesthetic', emoji:'🌸' },
+  { id:'savage', label:'🔥 Savage', emoji:'🔥' },
+  { id:'travel', label:'✈️ Travel', emoji:'✈️' },
+  { id:'fitness', label:'🏋️ Fitness', emoji:'🏋️' },
+  { id:'business', label:'💼 Business', emoji:'💼' },
+  { id:'student', label:'📚 Student', emoji:'📚' },
+];
+
+const BIOS = {
+  attitude: [
+    "😤 Born to stand out, not fit in\n👑 Self-made & unstoppable\n📍 Living life on my terms",
+    "🔥 Too real for fake people\n💯 No apologies, no regrets\n✨ My vibe, my rules",
+    "👑 Not everyone's cup of tea\n🌪️ Chaos with a pretty face\n🔒 Mind your own business",
+    "😎 Silence is my loudest answer\n🔥 Powered by attitude\n💪 My energy is not for everyone",
+    "⚡ They told me I couldn't — I did\n🎯 Goals > opinions\n🔥 Watch me",
+    "🦁 Quiet but deadly\n💥 Underestimate me — that's fun\n👑 Level: Unbothered",
+    "🌙 Day by day — fearless\n⭐ Born rare, staying rare\n🔥 Living proof that I'm that girl",
+    "😏 I let my success do the talking\n💎 Too glam to give a damn\n🔥 Not for the faint-hearted",
+  ],
+  love: [
+    "❤️ In love with life & good vibes\n🌸 Spreading love everywhere I go\n💫 Heart full, spirit free",
+    "💕 Love is my superpower\n🌺 Soft heart, strong mind\n✨ Chasing love and sunsets",
+    "🌹 Romanticizing my life daily\n❤️‍🔥 Passionately alive\n🌙 Love is always the answer",
+    "💖 Believer in love stories\n🌸 Making every moment beautiful\n🦋 Free spirited & loving it",
+    "💞 Love deeply, live freely\n🌟 Heart open, walls down\n🌹 The world needs more love",
+    "💗 Finding beauty in everything\n🌸 Kindness is my currency\n❤️ Love first, always",
+  ],
+  funny: [
+    "😂 Professional napper\n🍕 Pizza is my love language\n📱 Professional scroller since birth",
+    "🤣 Will do anything for food\n😴 Recovering from yesterday's nap\n🎭 My life is a comedy show",
+    "😅 I'm the reason we can't have nice things\n🍕 Diet starts... eventually\n🐸 Mood: yes",
+    "😂 Too lazy to write a bio\n🔍 Looking for my motivation — not found\n🎮 Free time? Napping.",
+    "🤪 Part-time human, full-time snacker\n😂 I put the 'fun' in 'dysfunctional'\n😴 Born tired",
+    "🙃 Normal is overrated\n🍟 My therapist is called food\n📺 Champion sleeper",
+  ],
+  motivational: [
+    "💪 Every day is a second chance\n🌟 Turning dreams into plans\n⚡ Motivated. Focused. Unstoppable.",
+    "🚀 Building the life I want\n💡 Small steps, big results\n🔥 I'm my own motivation",
+    "✨ Progress, not perfection\n💪 Work in silence, shine in public\n🎯 Goals first, everything else second",
+    "🌟 Hustle until your haters ask if you're hiring\n💡 Dream big. Work hard. Stay humble.\n🔥 Never stop growing",
+    "⚡ Powered by purpose\n💪 Discipline is my superpower\n🌟 Greatness is a daily choice",
+    "🎯 Born to win, built to last\n💥 Every setback is a setup for a comeback\n🔥 The grind never stops",
+  ],
+  aesthetic: [
+    "🌸 Living slowly & beautifully\n☕ Coffee, books, and good vibes\n🌙 Chasing golden hours",
+    "🌿 Soft life advocate\n🕯️ Aesthetic by choice\n✨ Finding magic in ordinary things",
+    "🦋 Bloom where you're planted\n🌸 Romanticizing every moment\n🍃 Nature, peace & pretty things",
+    "🌙 Moon child & daydreamer\n🌸 Creating beauty daily\n✨ Here for soft moments",
+    "🌿 Minimalist at heart\n☁️ Cloud gazer, star chaser\n🌸 Simple things = best things",
+    "🌺 Gentle spirit, wild soul\n🌙 Aesthetic & authentic\n🦋 Living in my own fairytale",
+  ],
+  savage: [
+    "🔥 I didn't come this far to only come this far\n😤 Self-made, self-paid\n💎 Not for everyone — and that's the point",
+    "🦁 Savage but classy\n🔥 I'm the villain in someone's story & I'm fine with that\n💅 Unbothered",
+    "😈 Not perfect, just iconic\n🔥 I'm my own competition\n💀 Ruthless but honest",
+    "🐍 Know your worth — then add tax\n💅 I don't chase, I attract\n🔥 Dangerous when underestimated",
+    "😏 My circle is small for a reason\n🔥 I'm not for everyone — I'm for the right ones\n💎 Diamond mentality",
+  ],
+  travel: [
+    "✈️ Collecting memories, not things\n🌍 World traveler in training\n📍 Always somewhere new",
+    "🗺️ Passport always ready\n✈️ Life is short — travel more\n🌏 Adventure is calling",
+    "🌊 Salty air & sandy toes\n✈️ Wanderlust & city lights\n📸 Documenting every journey",
+    "🏔️ Peak seeker & horizon chaser\n✈️ Travel is my therapy\n🌍 30+ countries & counting",
+    "🌅 Sunsets in new places\n✈️ Born to explore\n🗺️ The world is my home",
+  ],
+  fitness: [
+    "🏋️ Sweat now, shine later\n💪 Fitness is my lifestyle\n🥗 Gains & greens",
+    "🔥 Train insane or remain the same\n💪 My only competition is yesterday's me\n🏃 Running after goals",
+    "🥊 Pain is temporary, results are forever\n💪 Strong body, stronger mind\n🏋️ Gym is my happy place",
+    "🌟 Fit is not a destination, it's a way of life\n💪 Earning my rest days\n🥗 Fueled by protein & ambition",
+    "🏋️ Built different, trained harder\n🔥 No excuses, only results\n💪 Consistency > motivation",
+  ],
+  business: [
+    "💼 Entrepreneur | Building my empire\n📈 Turning ideas into income\n🔥 Hustle in silence, succeed loudly",
+    "💡 CEO of my own life\n📊 Making moves, taking risks\n💰 Business first, everything else second",
+    "🚀 Startup founder | Problem solver\n💼 Where passion meets profit\n🌟 Building something bigger than myself",
+    "💰 Money moves & big dreams\n📈 Scaling up, leveling up\n💡 Turning vision into reality",
+    "🔥 Entrepreneur | Content creator\n💼 Collaboration over competition\n📊 Results speak louder than words",
+  ],
+  student: [
+    "📚 Student by day, dreamer by night\n☕ Powered by coffee & ambition\n🎓 Future [Your Profession]",
+    "📖 Learning today, leading tomorrow\n🎓 Student life = best life\n💡 Knowledge is power",
+    "📚 Books, breaks & big dreams\n☕ Surviving on caffeine\n🌟 Class of 2025",
+    "🎓 Study hard, dream big\n📚 Making my parents proud\n☕ Coffee > everything else",
+    "📖 Student | Explorer | Dreamer\n💡 Every day is a lesson\n🌟 Writing my own story",
+  ],
+};
+
+let selectedCategory = 'attitude';
+
+function renderCategories() {
+  const grid = document.getElementById('category-grid');
+  grid.innerHTML = CATEGORIES.map(c => `
+    <button class="btn btn-secondary cat-btn ${c.id === selectedCategory ? 'btn-primary' : ''}" 
+      style="font-size:0.82rem; padding:0.5rem 0.6rem; text-align:left;" 
+      data-id="${c.id}" onclick="selectCategory('${c.id}', this)">
+      ${c.label}
+    </button>
+  `).join('');
+}
+
+function selectCategory(id, btn) {
+  selectedCategory = id;
+  document.querySelectorAll('.cat-btn').forEach(b => { b.classList.remove('btn-primary'); b.classList.add('btn-secondary'); });
+  btn.classList.add('btn-primary'); btn.classList.remove('btn-secondary');
+}
+
+function generateBios() {
+  const name = document.getElementById('user-name').value.trim();
+  const word = document.getElementById('user-word').value.trim();
+  const pool = BIOS[selectedCategory] || BIOS.attitude;
+  const shuffled = [...pool].sort(() => Math.random() - 0.5).slice(0, 5);
+
+  const list = document.getElementById('bio-list');
+  list.innerHTML = '';
+
+  shuffled.forEach((bio, i) => {
+    // Personalize the bio if name/word provided
+    let personalized = bio;
+    if (name) personalized = personalized.replace('Your Name', name).replace('your name', name);
+    if (word) personalized = personalized.replace('dreamer', word).replace('artist', word);
+
+    if (i > 0 && i % 3 === 0) {
+      list.insertAdjacentHTML('beforeend', '<div class="ad-slot" style="min-height:90px; margin:0.5rem 0;">📢 Advertisement</div>');
+    }
+
+    const el = document.createElement('div');
+    el.style.cssText = 'background:var(--card); border:1px solid var(--border); border-radius:var(--radius-sm); padding:1rem 1.1rem; display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; transition:border-color 0.2s;';
+    el.innerHTML = `
+      <div style="font-size:0.93rem; color:var(--text); white-space:pre-line; flex:1; line-height:1.6;">${personalized}</div>
+      <button class="btn btn-copy" style="flex-shrink:0;" onclick="copyText(\`${personalized.replace(/`/g,'\\`')}\`, this)">🔥 Copy</button>
+    `;
+    el.addEventListener('mouseenter', () => el.style.borderColor = 'rgba(124,92,252,0.4)');
+    el.addEventListener('mouseleave', () => el.style.borderColor = 'var(--border)');
+    list.appendChild(el);
+  });
+
+  document.getElementById('bio-results').style.display = 'block';
+  document.getElementById('bio-results').scrollIntoView({ behavior:'smooth', block:'nearest' });
+}
+
+renderCategories();
+generateBios();
+</script>
+</body>
+</html>

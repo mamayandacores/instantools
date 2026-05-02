@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instagram Caption Generator Free – Best Captions Online</title>
+  <meta name="description" content="Generate viral Instagram captions for free. Travel, selfie, food, motivation, friendship & more. Click generate and copy instantly. No signup needed." />
+  <meta name="keywords" content="instagram caption generator, caption generator, best instagram captions, photo caption generator free, viral caption ideas" />
+  <link rel="canonical" href="https://yourdomain.com/generators/caption-generator.html" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav-inner">
+    <a class="nav-logo" href="../index.html">⚡ Instant<span>Tools</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../tools.html">All Tools</a></li>
+      <li><a href="bio-generator.html">Bio Gen</a></li>
+      <li><a href="../content/captions.html">Captions</a></li>
+    </ul>
+    <button class="nav-menu-btn">☰</button>
+  </nav>
+</header>
+
+<div class="ad-slot ad-slot-banner container" style="margin-top:1rem;">📢 Advertisement</div>
+
+<main class="tool-page" style="max-width:800px;">
+  <div class="tool-box fade-up">
+    <span style="font-size:2.5rem;">💬</span>
+    <h1>Caption Generator</h1>
+    <p class="subtitle">Generate viral Instagram captions for any photo or mood. Choose a category and generate instantly!</p>
+
+    <label>Photo Type / Mood</label>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(120px,1fr)); gap:0.5rem; margin-bottom:1.2rem;">
+      <button class="btn btn-primary cap-btn active" data-cat="selfie" onclick="setCat(this,'selfie')">🤳 Selfie</button>
+      <button class="btn btn-secondary cap-btn" data-cat="travel" onclick="setCat(this,'travel')">✈️ Travel</button>
+      <button class="btn btn-secondary cap-btn" data-cat="food" onclick="setCat(this,'food')">🍕 Food</button>
+      <button class="btn btn-secondary cap-btn" data-cat="friends" onclick="setCat(this,'friends')">👫 Friends</button>
+      <button class="btn btn-secondary cap-btn" data-cat="motivation" onclick="setCat(this,'motivation')">💪 Motivation</button>
+      <button class="btn btn-secondary cap-btn" data-cat="nature" onclick="setCat(this,'nature')">🌿 Nature</button>
+      <button class="btn btn-secondary cap-btn" data-cat="night" onclick="setCat(this,'night')">🌙 Night Out</button>
+      <button class="btn btn-secondary cap-btn" data-cat="gym" onclick="setCat(this,'gym')">🏋️ Gym</button>
+    </div>
+
+    <label>Caption Length</label>
+    <div class="btn-row" style="margin-bottom:1.2rem;">
+      <button class="btn btn-primary len-btn active" data-len="short" onclick="setLen(this,'short')">Short</button>
+      <button class="btn btn-secondary len-btn" data-len="medium" onclick="setLen(this,'medium')">Medium</button>
+      <button class="btn btn-secondary len-btn" data-len="long" onclick="setLen(this,'long')">With Hashtags</button>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="generateCaptions()">💬 Generate Captions</button>
+      <button class="btn btn-secondary" onclick="generateCaptions()">✨ Generate Again</button>
+    </div>
+  </div>
+
+  <div id="caption-results" style="display:none;" class="fade-up-2">
+    <div style="display:flex; align-items:center; gap:0.7rem; padding:0 0 0.8rem;">
+      <h2 class="section-title" style="font-size:1.1rem; margin:0;">💬 Your Captions</h2>
+    </div>
+    <div id="caption-list" style="display:flex; flex-direction:column; gap:0.6rem;"></div>
+  </div>
+
+  <div class="ad-slot ad-slot-rectangle" style="margin:1.5rem auto;">📢 Advertisement</div>
+</main>
+
+<div class="related-section">
+  <h2 class="section-title" style="margin-bottom:1rem;">🔗 Related Pages</h2>
+  <div class="related-grid">
+    <a href="bio-generator.html" class="related-item">📸 Bio Generator</a>
+    <a href="title-generator.html" class="related-item">▶️ YouTube Titles</a>
+    <a href="../content/captions.html" class="related-item">📋 Captions Collection</a>
+    <a href="../content/instagram-bios.html" class="related-item">📸 Instagram Bios</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-links"><a href="../index.html">Home</a><a href="../tools.html">All Tools</a></div>
+  <p>© 2025 InstantToolsHub.com</p>
+</footer>
+<div class="ad-sticky-footer"><span style="color:var(--text3);font-size:0.75rem;">📢 Ad</span></div>
+
+<script src="../main.js"></script>
+<script>
+let currentCat = 'selfie';
+let currentLen = 'short';
+
+const CAPTIONS = {
+  selfie: {
+    short: ["Living my best life ✨","Me, myself & I 🌟","Too glam to give a damn 💅","Self-love era 🌸","I woke up like this 😎","Glowing different 🔥","Main character energy 👑"],
+    medium: ["Self-love is the best love 💕\nChoosing myself every single day ✨","Not perfect, just authentically me 🌟\nAnd that's enough 💫","She believed she could, so she did 💪\nBoss moves only 🔥"],
+    long: ["Life is short, take the photo 📸\nCapturing moments that matter most ✨\n\n#selfie #selflove #instadaily #photooftheday #instagood #lifestyle #vibes"],
+  },
+  travel: {
+    short: ["Wanderlust & city lights ✈️","Adventure is calling 🗺️","Not all who wander are lost 🌍","Collecting memories ✈️","New city, new story 🌅"],
+    medium: ["The world is too big to stay in one place ✈️\nEvery journey teaches something new 🌍","Adventure awaits around every corner 🗺️\nKeep exploring, keep discovering 🌟"],
+    long: ["Life is short and the world is wide 🌍\nOne flight at a time ✈️\nCollecting passport stamps & golden memories 🌅\n\n#travel #wanderlust #explore #adventure #travelgram #travelphotography #worldtravel"],
+  },
+  food: {
+    short: ["Food is my love language 🍕","Eat well, live well 🥗","First I eat, then I do everything else 😋","Good food = good mood 🍔","Calories don't count on weekends 😂"],
+    medium: ["Life is too short for bad food 🍕\nEating my way through the world one bite at a time 😋","Food brings people together 🍽️\nAnd honestly that's all we need 💕"],
+    long: ["Good food, good mood, good life 🍕\nBecause every meal is an experience worth savoring ✨\n\n#foodie #foodphotography #foodlover #instafood #yummy #delicious #foodgram #foodblogger"],
+  },
+  friends: {
+    short: ["Squad goals 🔥","My people 💕","Better together 👫","Friends who slay together, stay together ✨","My ride or dies 💯"],
+    medium: ["Good times + crazy friends = amazing memories 💫\nThank you for making life beautiful 💕","Friends are the family you choose 🌟\nMine are the best in the world 💕"],
+    long: ["Side by side or miles apart, real friends stay close at heart 💕\nThankful for these humans every single day ✨\n\n#friends #friendship #squad #friendsforever #bestfriends #memories #goodvibes #togetherness"],
+  },
+  motivation: {
+    short: ["Progress over perfection 🎯","Every day is a second chance 💪","Work hard in silence 🔥","Your only limit is you ⚡","Hustle & heart 💯"],
+    medium: ["The secret to getting ahead is getting started 🚀\nOne day or day one — you decide 💪","Small steps every day lead to big results 🌟\nTrust the process, trust yourself 🔥"],
+    long: ["Believe in yourself and all that you are 💪\nKnow that there is something inside you that is greater than any obstacle 🌟\n\n#motivation #mindset #hustle #goals #success #grind #inspire #nevergiveup #dailymotivation"],
+  },
+  nature: {
+    short: ["Into the wild 🌿","Nature heals 🌊","Green vibes only 🌱","Earth is art 🌍","Outside is my favorite 🏔️"],
+    medium: ["In every walk with nature, one receives far more than they seek 🌿\nThis is my therapy 🌊","The earth has music for those who listen 🌸\nNature never goes out of style 🌿"],
+    long: ["Sunsets & good vibes 🌅\nNature is the greatest artist of them all 🌿\nFeeling grateful for this beautiful world 🌍\n\n#nature #naturephotography #landscape #outdoors #mountains #sunset #earthpix #naturelover"],
+  },
+  night: {
+    short: ["City lights & late nights 🌙","Night mode on 🌃","Midnight vibes ✨","The night is young 🎉","After dark 🌙"],
+    medium: ["There's something magical about city lights at night 🌙\nWhen the sun goes down, life comes alive ✨","Living for the night time energy 🌃\nCreating memories after dark 🎉"],
+    long: ["The night belongs to dreamers and doers 🌙\nLate nights, good vibes, better memories ✨\n\n#nightlife #nightout #citynight #nightphotography #citylights #vibes #afterdark #nightmode"],
+  },
+  gym: {
+    short: ["Sweat now, shine later 💪","Gains season 🔥","Train insane 🏋️","No days off 💯","Beast mode on 🦁"],
+    medium: ["Your body can do it. It's your mind you need to convince 💪\nGym time = me time 🏋️","Pain is temporary, gains are forever 🔥\nEvery rep brings me closer to my goals 💪"],
+    long: ["Showing up when it's hard is what separates good from great 💪\nDedicated to the grind, committed to the goals 🏋️\n\n#gym #fitness #workout #gymlife #fitnessmotivation #lifting #gains #bodybuilding #health"],
+  },
+};
+
+function setCat(btn, cat) {
+  currentCat = cat;
+  document.querySelectorAll('.cap-btn').forEach(b => { b.classList.remove('btn-primary'); b.classList.add('btn-secondary'); });
+  btn.classList.add('btn-primary'); btn.classList.remove('btn-secondary');
+}
+
+function setLen(btn, len) {
+  currentLen = len;
+  document.querySelectorAll('.len-btn').forEach(b => { b.classList.remove('btn-primary'); b.classList.add('btn-secondary'); });
+  btn.classList.add('btn-primary'); btn.classList.remove('btn-secondary');
+}
+
+function generateCaptions() {
+  const pool = (CAPTIONS[currentCat] || CAPTIONS.selfie)[currentLen] || CAPTIONS.selfie.short;
+  const shuffled = [...pool].sort(() => Math.random() - 0.5).slice(0, Math.min(5, pool.length));
+  // Fill up to 5 from short if needed
+  let final = [...shuffled];
+  if (final.length < 5) {
+    const extra = CAPTIONS[currentCat].short.filter(c => !final.includes(c));
+    final = [...final, ...extra.slice(0, 5 - final.length)];
+  }
+
+  const list = document.getElementById('caption-list');
+  list.innerHTML = final.map((cap, i) => `
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:var(--radius-sm); padding:1rem 1.1rem; display:flex; align-items:flex-start; justify-content:space-between; gap:1rem;">
+      <div style="font-size:0.93rem; color:var(--text); white-space:pre-line; flex:1; line-height:1.7;">${cap}</div>
+      <button class="btn btn-copy" style="flex-shrink:0;" onclick="copyText(\`${cap.replace(/`/g,'\\`')}\`, this)">🔥 Copy</button>
+    </div>
+  `).join('');
+  document.getElementById('caption-results').style.display = 'block';
+  document.getElementById('caption-results').scrollIntoView({ behavior:'smooth', block:'nearest' });
+}
+
+generateCaptions();
+</script>
+</body>
+</html>

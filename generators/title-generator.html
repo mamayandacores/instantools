@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YouTube Title Generator Free – Clickbait & Viral Titles</title>
+  <meta name="description" content="Generate click-worthy YouTube titles for free. Enter your topic and get viral, clickbait, how-to, and listicle title ideas instantly. Boost your YouTube views!" />
+  <meta name="keywords" content="youtube title generator, youtube video title ideas, clickbait title generator, viral youtube titles, best youtube title maker free" />
+  <link rel="canonical" href="https://yourdomain.com/generators/title-generator.html" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav-inner">
+    <a class="nav-logo" href="../index.html">⚡ Instant<span>Tools</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../tools.html">All Tools</a></li>
+      <li><a href="bio-generator.html">Bio Gen</a></li>
+      <li><a href="caption-generator.html">Captions</a></li>
+    </ul>
+    <button class="nav-menu-btn">☰</button>
+  </nav>
+</header>
+
+<div class="ad-slot ad-slot-banner container" style="margin-top:1rem;">📢 Advertisement</div>
+
+<main class="tool-page" style="max-width:800px;">
+  <div class="tool-box fade-up">
+    <span style="font-size:2.5rem;">▶️</span>
+    <h1>YouTube Title Generator</h1>
+    <p class="subtitle">Enter your video topic and get 20+ click-worthy, viral YouTube title ideas instantly. More clicks = more views!</p>
+
+    <label for="topic">Your Video Topic</label>
+    <input type="text" id="topic" placeholder="e.g. How to make money online, weight loss tips, travel Pakistan..." maxlength="60" />
+
+    <label>Title Style</label>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); gap:0.5rem; margin-bottom:1.2rem;">
+      <button class="btn btn-primary title-btn active" data-style="viral" onclick="setTStyle(this,'viral')">🔥 Viral</button>
+      <button class="btn btn-secondary title-btn" data-style="howto" onclick="setTStyle(this,'howto')">📖 How-To</button>
+      <button class="btn btn-secondary title-btn" data-style="listicle" onclick="setTStyle(this,'listicle')">📋 List / Top 10</button>
+      <button class="btn btn-secondary title-btn" data-style="clickbait" onclick="setTStyle(this,'clickbait')">😱 Clickbait</button>
+      <button class="btn btn-secondary title-btn" data-style="question" onclick="setTStyle(this,'question')">❓ Question</button>
+      <button class="btn btn-secondary title-btn" data-style="story" onclick="setTStyle(this,'story')">📖 Story</button>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="generateTitles()">▶️ Generate Titles</button>
+      <button class="btn btn-secondary" onclick="generateTitles()">✨ Generate Again</button>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="title-results" style="display:none;" class="fade-up-2">
+    <div style="padding:0 0 0.8rem; display:flex; align-items:center; gap:0.7rem;">
+      <h2 class="section-title" style="font-size:1.1rem; margin:0;">▶️ Generated Titles</h2>
+      <span class="chip chip-green">Click to Copy</span>
+    </div>
+    <div id="title-list" style="display:flex; flex-direction:column; gap:0.5rem;"></div>
+  </div>
+
+  <div class="ad-slot ad-slot-rectangle" style="margin:1.5rem auto;">📢 Advertisement</div>
+
+  <!-- TIPS -->
+  <div class="tool-box fade-up-2">
+    <h2 style="font-size:1.1rem; margin-bottom:1rem;">📈 Tips for More YouTube Views</h2>
+    <div style="display:flex; flex-direction:column; gap:0.7rem;">
+      <div style="display:flex; gap:0.7rem; font-size:0.9rem; color:var(--text2);"><span>✅</span><span>Keep titles under 60 characters so they don't get cut off in search</span></div>
+      <div style="display:flex; gap:0.7rem; font-size:0.9rem; color:var(--text2);"><span>✅</span><span>Use numbers in titles — "5 Ways" gets more clicks than "Ways to"</span></div>
+      <div style="display:flex; gap:0.7rem; font-size:0.9rem; color:var(--text2);"><span>✅</span><span>Add emotional words: "Shocking", "Amazing", "You Won't Believe"</span></div>
+      <div style="display:flex; gap:0.7rem; font-size:0.9rem; color:var(--text2);"><span>✅</span><span>Put the most important keyword at the beginning of your title</span></div>
+      <div style="display:flex; gap:0.7rem; font-size:0.9rem; color:var(--text2);"><span>✅</span><span>Create curiosity — make viewers want to click to find the answer</span></div>
+    </div>
+  </div>
+</main>
+
+<div class="related-section">
+  <h2 class="section-title" style="margin-bottom:1rem;">🔗 Related Tools</h2>
+  <div class="related-grid">
+    <a href="bio-generator.html" class="related-item">📸 Bio Generator</a>
+    <a href="caption-generator.html" class="related-item">💬 Caption Generator</a>
+    <a href="username-generator.html" class="related-item">👤 Username Generator</a>
+    <a href="../tools/word-counter.html" class="related-item">📝 Word Counter</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-links"><a href="../index.html">Home</a><a href="../tools.html">All Tools</a></div>
+  <p>© 2025 InstantToolsHub.com</p>
+</footer>
+<div class="ad-sticky-footer"><span style="color:var(--text3);font-size:0.75rem;">📢 Ad</span></div>
+
+<script src="../main.js"></script>
+<script>
+let currentTStyle = 'viral';
+
+const TEMPLATES = {
+  viral: [
+    "This Changed Everything About [TOPIC]",
+    "I Tried [TOPIC] For 30 Days — Here's What Happened",
+    "The Truth About [TOPIC] Nobody Tells You",
+    "Why Everyone Is Talking About [TOPIC]",
+    "[TOPIC] Will Never Be The Same After This",
+    "I Spent $1000 on [TOPIC] — Was It Worth It?",
+    "The Real Reason [TOPIC] Works (Finally Explained)",
+    "Watch This Before You Try [TOPIC]",
+    "[TOPIC]: What They Don't Want You To Know",
+    "This [TOPIC] Hack Changed My Life",
+  ],
+  howto: [
+    "How To [TOPIC] In 10 Minutes (Step By Step)",
+    "How To [TOPIC] As A Complete Beginner",
+    "How To [TOPIC] For Free In 2025",
+    "How I Mastered [TOPIC] In Just 30 Days",
+    "How To [TOPIC] Without Any Experience",
+    "The Easiest Way To [TOPIC] (Beginner Guide)",
+    "How To [TOPIC] From Scratch — Full Tutorial",
+    "How To Start [TOPIC] Today (No Excuses!)",
+    "Complete Guide: How To [TOPIC] Properly",
+    "How Experts Do [TOPIC] (Copy Their Strategy)",
+  ],
+  listicle: [
+    "10 [TOPIC] Tips That Actually Work",
+    "7 Things You Didn't Know About [TOPIC]",
+    "Top 5 [TOPIC] Mistakes (And How To Fix Them)",
+    "15 Best [TOPIC] Hacks You Must Try",
+    "5 Reasons Why [TOPIC] Is The Best",
+    "10 [TOPIC] Secrets Pro's Don't Share",
+    "Top 10 [TOPIC] Ideas For 2025",
+    "7 Simple Ways To Improve Your [TOPIC]",
+    "5 [TOPIC] Myths — Busted!",
+    "The 3 Most Important [TOPIC] Tips",
+  ],
+  clickbait: [
+    "I Can't Believe This [TOPIC] Actually Works 😱",
+    "This [TOPIC] Secret Will Shock You... (Not Clickbait)",
+    "⚠️ WARNING: Never Do This With [TOPIC]",
+    "I Almost Gave Up On [TOPIC]... Then This Happened",
+    "Nobody Is Talking About THIS [TOPIC] Method 🔥",
+    "The [TOPIC] Method That ACTUALLY Works In 2025",
+    "EXPOSED: The Dark Side of [TOPIC]",
+    "I Was WRONG About [TOPIC] (Huge Mistake)",
+    "This [TOPIC] Method Is ILLEGAL In Some Countries 😂",
+    "Reacting To The WORST [TOPIC] Advice Online 😤",
+  ],
+  question: [
+    "Is [TOPIC] Really Worth It In 2025?",
+    "What Happens When You Try [TOPIC] Every Day?",
+    "Can You Really Make Money With [TOPIC]?",
+    "Why Is Everyone Obsessed With [TOPIC]?",
+    "Is [TOPIC] Dead? (The Honest Truth)",
+    "Should You Start [TOPIC] In 2025?",
+    "What Nobody Tells You About [TOPIC]?",
+    "Does [TOPIC] Actually Work? I Tested It",
+    "Which [TOPIC] Is Best For Beginners?",
+    "Can A Beginner Actually Succeed With [TOPIC]?",
+  ],
+  story: [
+    "My [TOPIC] Journey: From Zero to Success",
+    "How [TOPIC] Completely Changed My Life",
+    "I Started [TOPIC] With No Money — Here's What Happened",
+    "My Honest [TOPIC] Experience After 1 Year",
+    "I Quit My Job For [TOPIC] — Big Mistake?",
+    "How I Learned [TOPIC] In 30 Days (Story Time)",
+    "The Day [TOPIC] Saved My Life",
+    "From Beginner to Pro: My [TOPIC] Story",
+    "Why I Gave Up On [TOPIC] (And Started Again)",
+    "My [TOPIC] Transformation: Before & After",
+  ],
+};
+
+function setTStyle(btn, style) {
+  currentTStyle = style;
+  document.querySelectorAll('.title-btn').forEach(b => { b.classList.remove('btn-primary'); b.classList.add('btn-secondary'); });
+  btn.classList.add('btn-primary'); btn.classList.remove('btn-secondary');
+}
+
+function generateTitles() {
+  const topic = document.getElementById('topic').value.trim();
+  if (!topic) { showToast('⚠️ Please enter your video topic!'); return; }
+
+  const pool = TEMPLATES[currentTStyle] || TEMPLATES.viral;
+  const shuffled = [...pool].sort(() => Math.random() - 0.5);
+  const titles = shuffled.map(t => t.replace(/\[TOPIC\]/g, topic));
+
+  const list = document.getElementById('title-list');
+  list.innerHTML = titles.map((title, i) => {
+    const len = title.length;
+    const lenColor = len > 60 ? '#ef4444' : len > 50 ? '#f59e0b' : 'var(--green)';
+    return `
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:var(--radius-sm); padding:0.9rem 1.1rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; transition:border-color 0.2s;">
+        <div style="flex:1;">
+          <div style="font-size:0.93rem; color:var(--text); font-weight:500; line-height:1.5;">${title}</div>
+          <div style="font-size:0.75rem; color:${lenColor}; margin-top:0.3rem;">${len} characters ${len > 60 ? '— too long!' : '✓'}</div>
+        </div>
+        <button class="btn btn-copy" style="flex-shrink:0;" onclick="copyText(\`${title.replace(/`/g,'\\`')}\`, this)">🔥 Copy</button>
+      </div>
+    `;
+  }).join('');
+
+  document.getElementById('title-results').style.display = 'block';
+  document.getElementById('title-results').scrollIntoView({ behavior:'smooth', block:'nearest' });
+}
+</script>
+</body>
+</html>

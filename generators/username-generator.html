@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Username Generator – Cool Unique Usernames Free Online</title>
+  <meta name="description" content="Generate cool, unique usernames for Instagram, gaming, YouTube, TikTok and more. Free username generator — enter your name or keyword and get instant results!" />
+  <meta name="keywords" content="username generator, cool username generator, instagram username ideas, gaming username generator, unique username creator free" />
+  <link rel="canonical" href="https://yourdomain.com/generators/username-generator.html" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav-inner">
+    <a class="nav-logo" href="../index.html">⚡ Instant<span>Tools</span></a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../tools.html">All Tools</a></li>
+      <li><a href="bio-generator.html">Bio Gen</a></li>
+      <li><a href="../content/usernames.html">Usernames</a></li>
+    </ul>
+    <button class="nav-menu-btn">☰</button>
+  </nav>
+</header>
+
+<div class="ad-slot ad-slot-banner container" style="margin-top:1rem;">📢 Advertisement</div>
+
+<main class="tool-page" style="max-width:800px;">
+  <div class="tool-box fade-up">
+    <span style="font-size:2.5rem;">👤</span>
+    <h1>Username Generator</h1>
+    <p class="subtitle">Enter your name or any keyword and get 20+ unique, cool usernames instantly! Perfect for Instagram, YouTube, gaming & more.</p>
+
+    <label for="base-word">Your Name or Keyword</label>
+    <input type="text" id="base-word" placeholder="e.g. Alex, Shadow, Storm..." maxlength="20" />
+
+    <label>Platform</label>
+    <div class="btn-row" style="margin-bottom:1rem; flex-wrap:wrap;">
+      <button class="btn btn-primary plat-btn active" data-plat="general" onclick="setPlatform(this,'general')">🌐 General</button>
+      <button class="btn btn-secondary plat-btn" data-plat="instagram" onclick="setPlatform(this,'instagram')">📸 Instagram</button>
+      <button class="btn btn-secondary plat-btn" data-plat="gaming" onclick="setPlatform(this,'gaming')">🎮 Gaming</button>
+      <button class="btn btn-secondary plat-btn" data-plat="youtube" onclick="setPlatform(this,'youtube')">▶️ YouTube</button>
+      <button class="btn btn-secondary plat-btn" data-plat="tiktok" onclick="setPlatform(this,'tiktok')">🎵 TikTok</button>
+    </div>
+
+    <label>Style</label>
+    <div class="btn-row" style="margin-bottom:1rem; flex-wrap:wrap;">
+      <button class="btn btn-primary style-btn active" data-style="cool" onclick="setStyle(this,'cool')">😎 Cool</button>
+      <button class="btn btn-secondary style-btn" data-style="cute" onclick="setStyle(this,'cute')">🌸 Cute</button>
+      <button class="btn btn-secondary style-btn" data-style="savage" onclick="setStyle(this,'savage')">🔥 Savage</button>
+      <button class="btn btn-secondary style-btn" data-style="aesthetic" onclick="setStyle(this,'aesthetic')">✨ Aesthetic</button>
+      <button class="btn btn-secondary style-btn" data-style="short" onclick="setStyle(this,'short')">⚡ Short</button>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary" onclick="generateUsernames()">👤 Generate Usernames</button>
+      <button class="btn btn-secondary" onclick="generateUsernames()">✨ Generate Again</button>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="username-results" style="display:none;" class="tool-box fade-up-2">
+    <h2 style="font-size:1rem; font-weight:700; margin-bottom:1rem;">👤 Generated Usernames – Click to Copy!</h2>
+    <div id="username-list" style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem;"></div>
+  </div>
+
+  <div class="ad-slot ad-slot-rectangle" style="margin:1.5rem auto;">📢 Advertisement</div>
+</main>
+
+<div class="related-section">
+  <h2 class="section-title" style="margin-bottom:1rem;">🔗 Related Pages</h2>
+  <div class="related-grid">
+    <a href="bio-generator.html" class="related-item">📸 Bio Generator</a>
+    <a href="caption-generator.html" class="related-item">💬 Caption Generator</a>
+    <a href="../content/usernames.html" class="related-item">📋 Usernames Collection</a>
+    <a href="../tools/stylish-text.html" class="related-item">✨ Stylish Text</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-links"><a href="../index.html">Home</a><a href="../tools.html">All Tools</a></div>
+  <p>© 2025 InstantToolsHub.com</p>
+</footer>
+<div class="ad-sticky-footer"><span style="color:var(--text3);font-size:0.75rem;">📢 Ad</span></div>
+
+<script src="../main.js"></script>
+<script>
+let currentPlatform = 'general';
+let currentStyle = 'cool';
+
+const PREFIXES = { cool:['the','real','iam','_','official','pro','ultra','mega'], cute:['lil','mini','tiny','baby','sweet','soft','little'], savage:['dark','shadow','ghost','kill','wild','beast','raw'], aesthetic:['lunar','sol','aura','haze','mist','bloom','velvet'], short:['x','z','k','v'] };
+const SUFFIXES = { cool:['99','x','_','official','hq','real','pro','.co'], cute:['xo','cutie','pie','bear','heart','angel','babe'], savage:['666','_rip','.exe','_404','zero','_dark','fire'], aesthetic:['_','rose','sky','aura','moon','sun','star'], short:['x','_','99','0'] };
+const PLATFORM_SUFFIXES = { instagram:['gram','_ig','insta','pics'], gaming:['_gg','_pro','gamer','_fps','xd'], youtube:['_yt','tube','vlogs','tv','_official'], tiktok:['_tok','tiktok','_fyp','viral'], general:[''] };
+
+function setPlatform(btn, plat) {
+  currentPlatform = plat;
+  document.querySelectorAll('.plat-btn').forEach(b => { b.classList.remove('btn-primary'); b.classList.add('btn-secondary'); });
+  btn.classList.add('btn-primary'); btn.classList.remove('btn-secondary');
+}
+
+function setStyle(btn, style) {
+  currentStyle = style;
+  document.querySelectorAll('.style-btn').forEach(b => { b.classList.remove('btn-primary'); b.classList.add('btn-secondary'); });
+  btn.classList.add('btn-primary'); btn.classList.remove('btn-secondary');
+}
+
+function rand(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+function generateUsernames() {
+  const base = (document.getElementById('base-word').value.trim() || 'user').toLowerCase().replace(/\s+/g,'');
+  const prefixes = PREFIXES[currentStyle];
+  const suffixes = SUFFIXES[currentStyle];
+  const platSuffs = PLATFORM_SUFFIXES[currentPlatform];
+  const nums = ['','1','2','23','99','_1','_x','2x','7'];
+  
+  const results = new Set();
+  // Generate many variations
+  for (let i = 0; i < 40 && results.size < 20; i++) {
+    const patterns = [
+      rand(prefixes) + base + rand(nums),
+      base + rand(suffixes),
+      base + rand(nums) + rand(platSuffs),
+      rand(prefixes) + base,
+      base + '_' + rand(suffixes).replace('_',''),
+      base + rand(platSuffs) + rand(nums),
+      rand(prefixes) + '_' + base,
+      base.charAt(0).toUpperCase() + base.slice(1) + rand(nums),
+      base + base.charAt(base.length-1) + rand(nums),
+      '_' + base + '_',
+    ];
+    patterns.forEach(p => { if (p.length >= 3 && p.length <= 20) results.add(p.replace(/\s/g,'').replace(/[^a-zA-Z0-9_.]/g,'')); });
+  }
+
+  const list = document.getElementById('username-list');
+  list.innerHTML = [...results].slice(0, 20).map(u => `
+    <div style="background:var(--bg2); border:1px solid var(--border); border-radius:var(--radius-sm); padding:0.6rem 0.9rem; display:flex; align-items:center; justify-content:space-between; gap:0.5rem; cursor:pointer;" onclick="copyText('@${u}')">
+      <span style="font-family:monospace; color:var(--accent2); font-size:0.9rem;">@${u}</span>
+      <button class="btn btn-copy" style="padding:0.3rem 0.7rem; font-size:0.75rem;" onclick="event.stopPropagation(); copyText('@${u}', this)">Copy</button>
+    </div>
+  `).join('');
+  document.getElementById('username-results').style.display = 'block';
+}
+</script>
+</body>
+</html>
